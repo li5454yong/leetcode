@@ -1,5 +1,8 @@
 package com.lxgandlz;
 
+import com.alibaba.fastjson.JSON;
+import org.junit.Test;
+
 /**
  * @author li xin guang
  * 给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
@@ -41,8 +44,28 @@ package com.lxgandlz;
 public class Solution24 {
 
     public int removeDuplicates(int[] nums) {
+        if(nums.length == 0){
+            return 0;
+        }
+        int length = nums.length;
+        for(int i=0; i<length-1; ){
+            if(nums[i] == nums[i+1]){
+                // 移除重复元素
+                for(int j=i; j<length-1; j++){
+                    nums[j] = nums[j+1];
+                }
+                length--;
+            }else {
+                i++;
+            }
+        }
 
-        return 0;
+        return length;
+    }
+
+    @Test
+    public void test(){
+        System.out.println(removeDuplicates(new int[]{1,2,2,3,4,5,5,6,6,7,8,9}));
     }
 
 }
