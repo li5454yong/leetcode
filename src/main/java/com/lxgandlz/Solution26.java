@@ -41,7 +41,7 @@ import org.junit.Test;
  * }
  *
  */
-public class Solution24 {
+public class Solution26 {
 
     public int removeDuplicates(int[] nums) {
         if(nums.length == 0){
