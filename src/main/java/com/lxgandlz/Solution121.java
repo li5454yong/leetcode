@@ -1,5 +1,7 @@
 package com.lxgandlz;
 
+import org.junit.Test;
+
 /**
  * @author li xin guang
  * @date 2020/8/7 17:46
@@ -28,8 +30,29 @@ package com.lxgandlz;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class Solution121 {
-    public int maxProfit(int[] prices) {
 
-        return 0;
+    public int maxProfit(int[] prices) {
+        if(prices.length == 0){
+            return 0;
+        }
+        int min = prices[0],result = 0;
+        /**
+         * 记录下当先数组中的最小值、max(循环到的元素与最小值的差)
+         */
+        for(int a=0; a<prices.length; a++){
+            int diff = prices[a] - min;
+            result = result > diff ? result : diff;
+            min = min > prices[a] ? prices[a] : min;
+
+        }
+
+        return result;
     }
+
+    @Test
+    public void test() {
+        int[] arr = {7,1,5,3,6,4,10};
+        System.out.println(maxProfit(arr));
+    }
+
 }
