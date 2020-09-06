@@ -1,4 +1,4 @@
-package com.lxgandlz;
+package com.lxgandlz.leetcode;
 
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;
