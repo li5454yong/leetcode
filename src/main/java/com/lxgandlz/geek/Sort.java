@@ -135,9 +135,41 @@ public class Sort {
         return i;
     }
 
+    /**
+     * 计数排序
+     * @param arr
+     * @param n
+     */
+    public void countingSort(int[] arr, int n){
+        // 查找数组中的最大值
+        int max = arr[0];
+        for(int i=1; i<n; i++){
+            if(max < arr[i]){
+                max = arr[i];
+            }
+        }
+
+        // 创建一个计数数组
+        int[] countArr = new int[max+1];
+        for(int j=0; j<n; j++){
+            countArr[arr[j]]++;
+        }
+
+        for(int l=1; l<=max; l++){
+            countArr[l] = countArr[l-1] + countArr[l];
+        }
+        // 对结果进行排序
+        int[] result = new int[n];
+        for(int k=0; k<n; k++){
+            result[countArr[arr[k]]-1] = arr[k];
+            countArr[arr[k]]--;
+        }
+        //System.out.println(JSON.toJSONString(result));
+    }
+
     @Test
     public void test(){
-        int length = 10000000;
+        int length = 1000000;
         int[] arr = new int[length];
         Random random = new Random();
         for(int i=0; i<length; i++){
@@ -153,7 +185,7 @@ public class Sort {
 
         long start = System.currentTimeMillis();
         quickSort(arr,0,length-1);
-        //System.out.println(JSON.toJSONString());
+        countingSort(arr,length);
         System.out.println(System.currentTimeMillis() - start);
     }
 }
