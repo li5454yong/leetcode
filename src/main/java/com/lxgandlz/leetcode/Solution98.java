@@ -4,7 +4,6 @@ package com.lxgandlz.leetcode;
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;
 
-import javax.swing.tree.TreeNode;
 
 
 /**
@@ -63,47 +62,17 @@ public class Solution98 {
         TreeNode root = new TreeNode(5);
         TreeNode left = new TreeNode(1);
         TreeNode right = new TreeNode(4);
-        root.setLeft(left);
-        root.setRight(right);
+        root.left = left;
+        root.right = right;
 
         TreeNode left1 = new TreeNode(3);
         TreeNode right1 = new TreeNode(6);
-        right.setLeft(left1);
-        right.setRight(right1);
+        right.left = left1;
+        right.right = right1;
 
         System.out.printf(JSON.toJSONString(isValidBST(root)));
 
     }
 
-    class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-
-        public int getVal() {
-            return val;
-        }
-
-        public void setVal(int val) {
-            this.val = val;
-        }
-
-        public TreeNode getLeft() {
-            return left;
-        }
-
-        public void setLeft(TreeNode left) {
-            this.left = left;
-        }
-
-        public TreeNode getRight() {
-            return right;
-        }
-
-        public void setRight(TreeNode right) {
-            this.right = right;
-        }
-    }
 }
 
